@@ -1,0 +1,13 @@
+.pendiente{
+    background-color: white;
+  }
+  
+.completado {
+    background-color: rgb(201, 200, 200);
+    text-decoration: line-through;
+  }
+.tarea{
+  font-size:xx-large;
+  text-align:center;
+}
+  
