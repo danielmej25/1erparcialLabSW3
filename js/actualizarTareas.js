@@ -1,3 +1,37 @@
+function agregarTarea(codigo){
+    var tarea=document.getElementById("nuevaTarea").value;
+    console.log(codigo);
+    console.log(tarea);
+
+    var posicion=document.getElementById("tablaTareas").rows.length;
+    posicion--;
+
+    var f = new Date();
+    var fechaString=f.getDate() + '-' + (f.getMonth() +1) + '-' + f.getFullYear();
+
+    var contendor  = $("#listaTareas").html();
+    var nuevaFila   = '<tr align="center" class="pendiente" id="fila'+posicion+'" >';
+    nuevaFila   += '<td>'+tarea+'</td>';
+    nuevaFila  += '<td>'+fechaString+'</td>';
+    nuevaFila  += '<td>  <label><input type="checkbox" id="cbox1" onclick="alternarEstado('+posicion+','+codigo+')"> </label></td>';
+    nuevaFila   += '</tr>';
+    $("#listaTareas").html(contendor+nuevaFila);
+
+    $.ajax({
+        type:"get",
+        url:"addTarea.php",
+        data:{
+            id:codigo,
+            nombre:tarea
+        },
+        success:function()
+        {
+            alert("Tarea agregada");
+        }
+    })
+    
+}
+
 function alternarEstado(posicion,codigo){   
     var estado;
     var idobject="fila"+posicion;

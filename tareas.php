@@ -60,6 +60,7 @@
         //Cargo las tareas en un array
         $tareas=cargarTareasJson($codigo);       
         
+
         if($tareas==NULL){
             ?>
             <div class='alert alert-success'>
@@ -69,12 +70,12 @@
             <?php
         }else{
             ?> <center>
-                <table class="tarea"> 
+                <table id="tablaTareas" class="tarea"> 
                     <tr  align="center">
-                        <td>Nombre</td>
-                        <td>Creada</td>
-                        <td>Estado</td>
-                    </tr> <?php
+                        <th>Nombre</td>
+                        <th>Creada</td>
+                        <th>Estado</td>
+                    </tr> <tbody id="listaTareas"><?php
             $i=0;
             
             while($i<count($tareas)){ 
@@ -102,7 +103,7 @@
             }
 
 
-            ?> </table> </center><?php
+            ?> </tbody></table> </center><?php
         }
     }  
 ?>
@@ -161,7 +162,16 @@
         <!-- Formulario para el ingreso-->
         <div id="lista" class="container tab-pane active justify-content-center"><br>
             <div class="col-lg-8 mx-auto">
-                <h2>Tareas</h2>
+                
+                <center>
+
+                    <input type="text" class="form-control" id="nuevaTarea">
+                    <br>
+                    <button class="btn btn-secondary" type="submit" onclick="agregarTarea(<?php echo $_POST['codigo'] ?>)">Agregar Tarea</button>
+                    
+                </center>
+                <br>
+                <h2>Toda las tareas: </h2>
                 <?php 
                     mostrarTareas($_POST['codigo']);                    
                 ?>       
