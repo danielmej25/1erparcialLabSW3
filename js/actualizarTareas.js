@@ -1,4 +1,7 @@
 function agregarTarea(codigo){
+    if (document.getElementById("nuevaTarea").value == "") {
+        window.alert("no se puede ingresar");
+      }else{
     var tarea=document.getElementById("nuevaTarea").value;
     console.log(codigo);
     console.log(tarea);
@@ -29,6 +32,7 @@ function agregarTarea(codigo){
             alert("Tarea agregada");
         }
     })
+}
     
 }
 
